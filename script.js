@@ -12,7 +12,7 @@ function getComputerChoice(){
     
 }
 
-function rockPaperScissors(play){
+function rockPaperScissors(playerChoice){
     let randomInt;
     let cpuChoice;
     randomInt = Math.floor(Math.random() * 3) +1 ;
@@ -23,6 +23,14 @@ function rockPaperScissors(play){
         cpuChoice = 'Paper';
     }
     else if (randomInt == 3){
-        cpuChoice = 'Scissors'};
-    return (cpuChoice)
+        cpuChoice = 'Scissors';
+    }
+
+    if (cpuChoice == playerChoice){
+        return ('yay');
+    }
+    else {return ('boo')}
+    
+
+    
 }
