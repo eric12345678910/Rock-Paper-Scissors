@@ -5,7 +5,24 @@ function test(){
     return output
 }
 
-function add(x, y){
-    return x+y;
+function getComputerChoice(){
+    let rock = 1;
+    let paper = 2;
+    let scissors = 3;
+    
 }
 
+function rockPaperScissors(play){
+    let randomInt;
+    let cpuChoice;
+    randomInt = Math.floor(Math.random() * 3) +1 ;
+    if (randomInt == 1){
+        cpuChoice = 'Rock';
+    }
+    else if (randomInt == 2){
+        cpuChoice = 'Paper';
+    }
+    else if (randomInt == 3){
+        cpuChoice = 'Scissors'};
+    return (cpuChoice)
+}
