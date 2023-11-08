@@ -4,10 +4,8 @@ function test(){
     return output
 }
 
-let playerSelection;
-let computerSelection;
 
-function getPlayerSelection(playerSelection){
+function getPlayerSelection(){
     playerSelection = prompt('Rock... Paper...')
     if (!(playerSelection == 'Rock' || playerSelection == 'Paper' || playerSelection == 'Scissors')){
         return('Looks like We\'ve got a comedian over here!')
@@ -24,44 +22,49 @@ function getComputerSelection(){
 
     randomInt = Math.floor(Math.random() * 3) +1 ;
     if (randomInt == 1){
-        computerSelection = 'Rock';
+        computerSelection = 'ROCK';
     }
     else if (randomInt == 2){
-        computerSelection = 'Paper';
+        computerSelection = 'PAPER';
     }
     else if (randomInt == 3){
-        computerSelection = 'Scissors';
+        computerSelection = 'SCISSORS';
     }
-    return computerSelection;
+    return (computerSelection);
 }
 
 
-function rockPaperScissors(playerSelection, computerSelection) {
-
-    let computerSelection = getComputerChoice()
-
-    if (computerSelection.toUpperCase() == playerSelection.toUpperCase()){
+function singleRound(playerSelection, computerSelection) {
+    if (computerSelection.upperCase == playerSelection.upperCase){
         return ("It\'s a Tie!");
     }
-    else if (computerSelection.toUpperCase == 'Rock' && playerSelection.toUpperCase == 'Paper'){
+    else if (computerSelection == 'ROCK' && playerSelection.upperCase == 'PAPER'){
         return('You Win! Paper covers Rock.');
     }
-    else if (computerSelection.toUpperCase == 'Paper' && playerSelection.toUpperCase == 'Scissors'){
+    else if (computerSelection == 'PAPER' && playerSelection.upperCase == 'SCISSORS'){
         return("You Win! Scissors cut Paper.")
     }
-    else if (computerSelection.toUpperCase == 'Scissors' && playerSelection.toUpperCase == 'Rock'){
+    else if (computerSelection == 'SCISSORS' && playerSelection.upperCase == 'ROCK'){
         return("You Win! Rock breaks Scissors.")
     }
 
-    else if (computerSelection.toUpperCase == 'Rock' && playerSelection.toUpperCase == 'Scissors'){
+    else if (computerSelection == 'ROCK' && playerSelection.upperCase == 'SCISSORS'){
         return("You lose. Rock breaks Scissors.")
     }
-    else if (computerSelection.toUpperCase == 'Paper' && playerSelection.toUpperCase == 'Rock'){
+    else if (computerSelection == 'PAPER' && playerSelection.upperCase == 'ROCK'){
         return("You lose. Paper covers Rock.")
     }
-    else if (computerSelection.toUpperCase == 'Scissors' && playerSelection.toUpperCase == 'Paper'){
+    else if (computerSelection == 'SCISSORS' && playerSelection.upperCase == 'PAPER'){
         return("You lose. Scissors cut Paper.")
     }
+    else{
+        return("That didn\'t work.")
+    }
+}
+
+function rockPaperScissors(){
+    getPlayerSelection();
+    getComputerSelection();
 }
 
 
