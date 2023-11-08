@@ -4,26 +4,41 @@ function test(){
     return output
 }
 
+let playerSelection;
 let computerSelection;
 
-function getComputerChoice(){
-    let randomInt;
-    let computerChoice;
-    randomInt = Math.floor(Math.random() * 3) +1 ;
-    if (randomInt == 1){
-        computerChoice = 'Rock';
+function getPlayerSelection(playerSelection){
+    playerSelection = prompt('Rock... Paper...')
+    if (!(playerSelection == 'Rock' || playerSelection == 'Paper' || playerSelection == 'Scissors')){
+        return('Looks like We\'ve got a comedian over here!')
     }
-    else if (randomInt == 2){
-        computerChoice = 'Paper';
+    else{
+        return(playerSelection)  
     }
-    else if (randomInt == 3){
-        computerChoice = 'Scissors';
-    }
-    return computerChoice;
-    computerSelection = computerChoice;
 }
 
+
+function getComputerSelection(){
+    let randomInt;
+    let computerSelection;
+
+    randomInt = Math.floor(Math.random() * 3) +1 ;
+    if (randomInt == 1){
+        computerSelection = 'Rock';
+    }
+    else if (randomInt == 2){
+        computerSelection = 'Paper';
+    }
+    else if (randomInt == 3){
+        computerSelection = 'Scissors';
+    }
+    return computerSelection;
+}
+
+
 function rockPaperScissors(playerSelection, computerSelection) {
+
+    let computerSelection = getComputerChoice()
 
     if (computerSelection.toUpperCase() == playerSelection.toUpperCase()){
         return ("It\'s a Tie!");
