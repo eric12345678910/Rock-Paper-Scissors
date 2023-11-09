@@ -1,10 +1,3 @@
-
-output = "This is the output of my test";
-function test(){
-    return(output)
-}
-
-
 function getPlayerSelection(){
 
     playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
