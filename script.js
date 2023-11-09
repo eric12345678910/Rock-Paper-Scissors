@@ -1,6 +1,6 @@
 function getPlayerSelection(){
 
-    playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
+    playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim();
     
     while (!(playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS')){
         console.log('OOPS! LOOKS LIKE SOMETHING WENT WRONG!\nDON\'T FORGET, THE THREE OPTIONS FOR ROCK, PAPER, SCISSORS ARE: \nROCK, PAPER, AND SCISSORS');
@@ -48,16 +48,16 @@ function singleRound(playerSelection, computerSelection) {
         return (winMessage);
     }
     else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
-        return (loseMessage)
+        return (loseMessage);
     }
     else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
-        return(loseMessage)
+        return(loseMessage);
     }
     else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
-        return(loseMessage)
+        return(loseMessage);
     }
     else{
-        return(errorMessage)
+        return(errorMessage);
     }
 }
 
@@ -69,17 +69,17 @@ function rockPaperScissors(){
 
     while (playerScore < limit || computerScore < limit) {
         if (playerScore == limit){
-            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU WIN!!!!!")
-            break
+            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU WIN!!!!!");
+            break;
         }
         else if (computerScore == limit){
-            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU LOSE!!!!!")
-            break
+            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU LOSE!!!!!");
+            break;
         }
 
-        console.log('')
-        console.log('ROUND ', round, '        USER ', playerScore, '    CPU ', computerScore )
-        result = singleRound(  getPlayerSelection(), getComputerSelection() )
+        console.log('');
+        console.log('ROUND ', round, '        USER ', playerScore, '    CPU ', computerScore );
+        result = singleRound(  getPlayerSelection(), getComputerSelection() );
 
         if (result.includes('WIN')){
             playerScore++;
