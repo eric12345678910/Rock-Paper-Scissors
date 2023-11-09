@@ -6,13 +6,14 @@ function test(){
 
 
 function getPlayerSelection(){
-    selection = prompt('Rock... Paper...')
-    playerSelection = selection.toUpperCase().trim()
-    if (!(playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS')){
-        return('Looks like We\'ve got a comedian over here!')
+
+    playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
+    if (playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS'){
+        return playerSelection;
     }
     else{
-        return(playerSelection)  
+        console.log('OOPS! LOOKS LIKE SOMETHING WENT WRONG!\nDON\'T FORGET, THE THREE OPTIONS FOR ROCK, PAPER, SCISSORS ARE: \nROCK, PAPER, AND SCISSORS')
+        playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
     }
 }
 
