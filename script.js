@@ -41,7 +41,7 @@ function singleRound(playerSelection, computerSelection) {
     let loseMessage = "YOU LOSE!";
     let errorMessage = "WELL, THAT DIDN\'T WORK";
 
-    console.log('User plays: ', playerSelection, '    Computer Plays: ', computerSelection)
+    console.log('                ', playerSelection, ' vs ',computerSelection)
     if (computerSelection == playerSelection){
         return (tieMessage);
     }
@@ -69,25 +69,32 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function rockPaperScissors(){
-    let limit = 2;
+    let limit = 4;
+    let round = 1;
     let playerScore = 0;
     let computerScore = 0;
+
     while (playerScore < limit || computerScore < limit) {
-        console.log('USER ', playerScore, '  CPU ', computerScore )
-        result = singleRound(  getPlayerSelection(), getComputerSelection()  )
+        console.log('')
+        console.log('ROUND ', round, '        USER ', playerScore, '    CPU ', computerScore )
+        result = singleRound(  getPlayerSelection(), getComputerSelection() )
+
         if (result.includes('WIN')){
-            playerScore++
-            console.log('YOU WIN')
+            playerScore++;
+            round++;
+            console.log('                 YOU WIN');
         } 
         else if (result.includes('LOSE')){
-            computerScore++
-            console.log('YOU LOSE')
+            computerScore++;
+            round++;
+            console.log('                 YOU LOSE');
         }
         else if (result.includes('TIE' || "THAT DIDN\'T WORK.")){
-            console.log('IT\'S A TIE!')
+            round++;
+            console.log('                 IT\'S A TIE!\n');
         }
-
     }
+
     if (playerScore == limit) {
         return('YOU WIN')
     }
