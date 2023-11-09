@@ -8,13 +8,12 @@ function test(){
 function getPlayerSelection(){
 
     playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
-    if (playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS'){
-        return playerSelection;
+    
+    while (!(playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS')){
+        console.log('OOPS! LOOKS LIKE SOMETHING WENT WRONG!\nDON\'T FORGET, THE THREE OPTIONS FOR ROCK, PAPER, SCISSORS ARE: \nROCK, PAPER, AND SCISSORS');
+        playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim();
     }
-    else{
-        console.log('OOPS! LOOKS LIKE SOMETHING WENT WRONG!\nDON\'T FORGET, THE THREE OPTIONS FOR ROCK, PAPER, SCISSORS ARE: \nROCK, PAPER, AND SCISSORS')
-        playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim()
-    }
+    return playerSelection;
 }
 
 
@@ -70,12 +69,21 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function rockPaperScissors(){
-    let limit = 4;
+    let limit = 5;
     let round = 1;
     let playerScore = 0;
     let computerScore = 0;
 
     while (playerScore < limit || computerScore < limit) {
+        if (playerScore == limit){
+            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU WIN!!!!!")
+            break
+        }
+        else if (computerScore == limit){
+            console.log("FINAL SCORE      USER ",playerScore, "CPU ", computerScore, "\nYOU LOSE!!!!!")
+            break
+        }
+
         console.log('')
         console.log('ROUND ', round, '        USER ', playerScore, '    CPU ', computerScore )
         result = singleRound(  getPlayerSelection(), getComputerSelection() )
@@ -94,13 +102,6 @@ function rockPaperScissors(){
             round++;
             console.log('                 IT\'S A TIE!\n');
         }
-    }
-
-    if (playerScore == limit) {
-        return('YOU WIN')
-    }
-    else if (computerScore == limit){
-        return('YOU LOSE')
     }
 }
 
