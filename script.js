@@ -6,8 +6,9 @@ function test(){
 
 
 function getPlayerSelection(){
-    playerSelection = prompt('Rock... Paper...')
-    if (!(playerSelection == 'Rock' || playerSelection == 'Paper' || playerSelection == 'Scissors')){
+    selection = prompt('Rock... Paper...')
+    playerSelection = selection.toUpperCase().trim()
+    if (!(playerSelection == 'ROCK' || playerSelection == 'PAPER' || playerSelection == 'SCISSORS')){
         return('Looks like We\'ve got a comedian over here!')
     }
     else{
@@ -35,26 +36,26 @@ function getComputerSelection(){
 
 
 function singleRound(playerSelection, computerSelection) {
-    if (computerSelection.upperCase == playerSelection.upperCase){
+    if (computerSelection == playerSelection){
         return ("It\'s a Tie!");
     }
-    else if (computerSelection == 'ROCK' && playerSelection.upperCase == 'PAPER'){
+    else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
         return('You Win! Paper covers Rock.');
     }
-    else if (computerSelection == 'PAPER' && playerSelection.upperCase == 'SCISSORS'){
+    else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
         return("You Win! Scissors cut Paper.")
     }
-    else if (computerSelection == 'SCISSORS' && playerSelection.upperCase == 'ROCK'){
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
         return("You Win! Rock breaks Scissors.")
     }
 
-    else if (computerSelection == 'ROCK' && playerSelection.upperCase == 'SCISSORS'){
+    else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
         return("You lose. Rock breaks Scissors.")
     }
-    else if (computerSelection == 'PAPER' && playerSelection.upperCase == 'ROCK'){
+    else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
         return("You lose. Paper covers Rock.")
     }
-    else if (computerSelection == 'SCISSORS' && playerSelection.upperCase == 'PAPER'){
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
         return("You lose. Scissors cut Paper.")
     }
     else{
