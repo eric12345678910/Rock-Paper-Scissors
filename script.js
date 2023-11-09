@@ -9,7 +9,6 @@ function getPlayerSelection(){
     return playerSelection;
 }
 
-
 function getComputerSelection(){
     let randomInt;
     let computerSelection;
@@ -26,7 +25,6 @@ function getComputerSelection(){
     }
     return (computerSelection);
 }
-
 
 function singleRound(playerSelection, computerSelection) {
     let tieMessage = "IT\'S A TIE";
@@ -97,5 +95,3 @@ function rockPaperScissors(){
         }
     }
 }
-
-
