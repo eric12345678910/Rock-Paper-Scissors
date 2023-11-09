@@ -48,7 +48,6 @@ function singleRound(playerSelection, computerSelection) {
     else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
         return("You Win! Rock breaks Scissors.")
     }
-
     else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
         return("You lose. Rock breaks Scissors.")
     }
@@ -64,8 +63,26 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function rockPaperScissors(){
-    getPlayerSelection();
-    getComputerSelection();
+    let limit = 5;
+    let playerScore = 0;
+    let computerScore = 0;
+    while (playerScore < limit || computerScore < limit) {
+        result = singleRound(  getPlayerSelection(), getComputerSelection()  )
+        if (result.includes('Win')){
+            playerScore++
+            console.log('You win')
+        } 
+        else if (result.includes('lose')){
+            computerScore++
+            console.log('You lose')
+        }
+    }
+    if (playerScore == limit) {
+        return('YOU WIN')
+    }
+    else if (computerScore == limit){
+        return('YOU LOSE')
+    }
 }
 
 
