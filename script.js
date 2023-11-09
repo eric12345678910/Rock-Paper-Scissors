@@ -1,7 +1,7 @@
 
 output = "This is the output of my test";
 function test(){
-    return output
+    return(output)
 }
 
 
@@ -36,46 +36,57 @@ function getComputerSelection(){
 
 
 function singleRound(playerSelection, computerSelection) {
+    let tieMessage = "IT\'S A TIE";
+    let winMessage = "YOU WIN!";
+    let loseMessage = "YOU LOSE!";
+    let errorMessage = "WELL, THAT DIDN\'T WORK";
+
+    console.log('User plays: ', playerSelection, '    Computer Plays: ', computerSelection)
     if (computerSelection == playerSelection){
-        return ("It\'s a Tie!");
+        return (tieMessage);
     }
     else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
-        return('You Win! Paper covers Rock.');
+        return (winMessage);
     }
     else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
-        return("You Win! Scissors cut Paper.")
+        return (winMessage);
     }
     else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
-        return("You Win! Rock breaks Scissors.")
+        return (winMessage);
     }
     else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
-        return("You lose. Rock breaks Scissors.")
+        return (loseMessage)
     }
     else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
-        return("You lose. Paper covers Rock.")
+        return(loseMessage)
     }
     else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
-        return("You lose. Scissors cut Paper.")
+        return(loseMessage)
     }
     else{
-        return("That didn\'t work.")
+        return(errorMessage)
     }
 }
 
 function rockPaperScissors(){
-    let limit = 5;
+    let limit = 2;
     let playerScore = 0;
     let computerScore = 0;
     while (playerScore < limit || computerScore < limit) {
+        console.log('USER ', playerScore, '  CPU ', computerScore )
         result = singleRound(  getPlayerSelection(), getComputerSelection()  )
-        if (result.includes('Win')){
+        if (result.includes('WIN')){
             playerScore++
-            console.log('You win')
+            console.log('YOU WIN')
         } 
-        else if (result.includes('lose')){
+        else if (result.includes('LOSE')){
             computerScore++
-            console.log('You lose')
+            console.log('YOU LOSE')
         }
+        else if (result.includes('TIE' || "THAT DIDN\'T WORK.")){
+            console.log('IT\'S A TIE!')
+        }
+
     }
     if (playerScore == limit) {
         return('YOU WIN')
