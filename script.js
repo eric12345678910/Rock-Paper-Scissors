@@ -1,6 +1,13 @@
-let playerScore = 0
-let cpuScore = 0
+let limit = 3;
+let playerScore = 0;
+let cpuScore = 0;
 
+let playerScoreElement = document.getElementsByClassName('playerScore');
+let cpuScoreElement = document.getElementsByClassName('cpuScore');
+let resultsElement = document.getElementsByClassName('results')
+
+console.log(playerScoreElement);
+console.log(cpuScoreElement);
 
 /*function getPlayerSelection(){
 
@@ -32,6 +39,7 @@ function getComputerSelection(){
     return (computerSelection);
 }
 
+/*
 function singleRound(playerSelection, computerSelection) {
     let tieMessage = "IT\'S A TIE";
     let winMessage = "YOU WIN!";
@@ -64,7 +72,7 @@ function singleRound(playerSelection, computerSelection) {
         return(errorMessage);
     }
 };
-
+*/
 function round(playerSelection){
     let computerSelection = getComputerSelection();
     //console.log(computerSelection);
@@ -76,47 +84,65 @@ function round(playerSelection){
     else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
         console.log('Win');
         playerScore +=1;
+        playerScoreElement[0].innerHtml = playerScore;
+        
     }
     else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
         console.log('Win');
         playerScore +=1;
+        playerScoreElement[0].innerText = playerScore;
     }
     else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
         console.log('Win');;
         playerScore +=1;
+        playerScoreElement[0].innerText = playerScore;
     }
     else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
         console.log('Lose');
         cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
     }
     else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
         console.log('Lose');
         cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
     }
     else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
         console.log('Lose');
         cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
     }
     else{
         console.log('Error');
     }
 
-
-
     if (playerScore == limit){
         celebration();
+        resultsElement[0].innerText = 'You Won'
+        playerScoreElement[0].innerText = '0'
+        cpuScoreElement[0].innerText = '0';
+
+        ;
     } else if (cpuScore == limit){
         consolation();
+        resultsElement[0].innerText = 'You Lost'
+        playerScoreElement[0].innerText = '0'
+        cpuScoreElement[0].innerText = '0';
+    } else{
+        resultsElement[0].innerText = ''
     }
 
-    console.log("Player: ", playerScore, "CUP:", cpuScore)
 
+    playerScoreElement.innerHtml = playerScore;
+    cpuScoreElement.innerHtml = cpuScore;
+    console.log("Player: ", playerScore, "CUP:", cpuScore);
+    //console.log('player element', playerScoreElement);
+    //console.log('cpu element', cpuScoreElement);
 }
 
 
-
+/*
 function rockPaperScissors(){
-    let limit = 1;
     let round = 0;
     let playerScore = 0;
     let computerScore = 0;
@@ -151,7 +177,7 @@ function rockPaperScissors(){
         }
     }
 }
-
+*/
 
 
 function rock(){
@@ -177,7 +203,7 @@ document.getElementById("rock").addEventListener("click", rock);
 document.getElementById("paper").addEventListener("click", paper);
 document.getElementById("scissors").addEventListener("click", scissors);
 
-let limit = 5;
+
 
 function celebration(){
     console.log('           YOU WIN             ');
@@ -192,3 +218,8 @@ function consolation(){
 }
 
 
+
+
+
+//playerScoreElement.innerHtml = playerScore;
+//cpuScoreElement.innerHtml = cpuScore;
