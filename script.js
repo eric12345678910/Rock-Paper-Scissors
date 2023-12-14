@@ -1,4 +1,8 @@
-function getPlayerSelection(){
+let playerScore = 0
+let cpuScore = 0
+
+
+/*function getPlayerSelection(){
 
     playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim();
     
@@ -8,6 +12,8 @@ function getPlayerSelection(){
     }
     return playerSelection;
 }
+*/
+
 
 function getComputerSelection(){
     let randomInt;
@@ -57,11 +63,61 @@ function singleRound(playerSelection, computerSelection) {
     else{
         return(errorMessage);
     }
+};
+
+function round(playerSelection){
+    let computerSelection = getComputerSelection();
+    //console.log(computerSelection);
+    //console.log(playerSelection);
+
+    if (computerSelection == playerSelection){
+        console.log('Tie');
+    }
+    else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
+        console.log('Win');
+        playerScore +=1;
+    }
+    else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
+        console.log('Win');
+        playerScore +=1;
+    }
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
+        console.log('Win');;
+        playerScore +=1;
+    }
+    else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
+        console.log('Lose');
+        cpuScore +=1;
+    }
+    else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
+        console.log('Lose');
+        cpuScore +=1;
+    }
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
+        console.log('Lose');
+        cpuScore +=1;
+    }
+    else{
+        console.log('Error');
+    }
+
+
+
+    if (playerScore == limit){
+        celebration();
+    } else if (cpuScore == limit){
+        consolation();
+    }
+
+    console.log("Player: ", playerScore, "CUP:", cpuScore)
+
 }
 
+
+
 function rockPaperScissors(){
-    let limit = 5;
-    let round = 1;
+    let limit = 1;
+    let round = 0;
     let playerScore = 0;
     let computerScore = 0;
 
@@ -95,3 +151,44 @@ function rockPaperScissors(){
         }
     }
 }
+
+
+
+function rock(){
+    playerSelection = "ROCK";
+    round('ROCK')
+    //console.log(playerSelection);
+}
+
+function paper(){
+    playerSelection = "PAPER";
+    round('PAPER')
+    //console.log(playerSelection);
+}
+
+function scissors(){
+    playerSelection = "SCISSORS";
+    round('SCISSORS')
+    //console.log(playerSelection);
+}
+
+
+document.getElementById("rock").addEventListener("click", rock);
+document.getElementById("paper").addEventListener("click", paper);
+document.getElementById("scissors").addEventListener("click", scissors);
+
+let limit = 5;
+
+function celebration(){
+    console.log('           YOU WIN             ');
+    playerScore = 0;
+    cpuScore = 0;
+}
+
+function consolation(){
+    console.log('           YOU LOSE            ')
+    playerScore = 0;
+    cpuScore = 0;
+}
+
+
