@@ -1,4 +1,15 @@
-function getPlayerSelection(){
+let limit = 3;
+let playerScore = 0;
+let cpuScore = 0;
+
+let playerScoreElement = document.getElementsByClassName('playerScore');
+let cpuScoreElement = document.getElementsByClassName('cpuScore');
+let resultsElement = document.getElementsByClassName('results')
+
+console.log(playerScoreElement);
+console.log(cpuScoreElement);
+
+/*function getPlayerSelection(){
 
     playerSelection = prompt('Rock... Paper...Scissors').toUpperCase().trim();
     
@@ -8,6 +19,8 @@ function getPlayerSelection(){
     }
     return playerSelection;
 }
+*/
+
 
 function getComputerSelection(){
     let randomInt;
@@ -26,6 +39,7 @@ function getComputerSelection(){
     return (computerSelection);
 }
 
+/*
 function singleRound(playerSelection, computerSelection) {
     let tieMessage = "IT\'S A TIE";
     let winMessage = "YOU WIN!";
@@ -57,11 +71,80 @@ function singleRound(playerSelection, computerSelection) {
     else{
         return(errorMessage);
     }
+};
+*/
+function round(playerSelection){
+    let computerSelection = getComputerSelection();
+    //console.log(computerSelection);
+    //console.log(playerSelection);
+
+    if (computerSelection == playerSelection){
+        console.log('Tie');
+    }
+    else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
+        console.log('Win');
+        playerScore +=1;
+        playerScoreElement[0].innerHtml = playerScore;
+        
+    }
+    else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
+        console.log('Win');
+        playerScore +=1;
+        playerScoreElement[0].innerText = playerScore;
+    }
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
+        console.log('Win');;
+        playerScore +=1;
+        playerScoreElement[0].innerText = playerScore;
+    }
+    else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
+        console.log('Lose');
+        cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
+    }
+    else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
+        console.log('Lose');
+        cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
+    }
+    else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
+        console.log('Lose');
+        cpuScore +=1;
+        cpuScoreElement[0].innerText = cpuScore;
+    }
+    else{
+        console.log('Error');
+    }
+
+    if (playerScore == limit){
+        celebration();
+        resultsElement[0].innerText = 'You Won'
+        playerScoreElement[0].innerText = '0'
+        cpuScoreElement[0].innerText = '0';
+
+        ;
+    } else if (cpuScore == limit){
+        consolation();
+        resultsElement[0].innerText = 'You Lost'
+        playerScoreElement[0].innerText = '0'
+        cpuScoreElement[0].innerText = '0';
+    } else{
+        resultsElement[0].innerText = ''
+    }
+
+
+    playerScoreElement.innerHtml = playerScore;
+    cpuScoreElement.innerHtml = cpuScore;
+    console.log("Player: ", playerScore, "CUP:", cpuScore);
+    //console.log('player element', playerScoreElement);
+    //console.log('cpu element', cpuScoreElement);
 }
 
+
+/*
 function rockPaperScissors(){
-    let limit = 1;
-    let round = 1;
+
+    let round = 0;
     let playerScore = 0;
     let computerScore = 0;
 
@@ -95,7 +178,49 @@ function rockPaperScissors(){
         }
     }
 }
+*/
 
-document.getElementById("rock").addEventListener("click", rockPaperScissors);
-document.getElementById("paper").addEventListener("click", rockPaperScissors);
-document.getElementById("scissors").addEventListener("click", rockPaperScissors);
+
+function rock(){
+    playerSelection = "ROCK";
+    round('ROCK')
+    //console.log(playerSelection);
+}
+
+function paper(){
+    playerSelection = "PAPER";
+    round('PAPER')
+    //console.log(playerSelection);
+}
+
+function scissors(){
+    playerSelection = "SCISSORS";
+    round('SCISSORS')
+    //console.log(playerSelection);
+}
+
+
+document.getElementById("rock").addEventListener("click", rock);
+document.getElementById("paper").addEventListener("click", paper);
+document.getElementById("scissors").addEventListener("click", scissors);
+
+
+
+function celebration(){
+    console.log('           YOU WIN             ');
+    playerScore = 0;
+    cpuScore = 0;
+}
+
+function consolation(){
+    console.log('           YOU LOSE            ')
+    playerScore = 0;
+    cpuScore = 0;
+}
+
+
+
+
+
+//playerScoreElement.innerHtml = playerScore;
+//cpuScoreElement.innerHtml = cpuScore;
