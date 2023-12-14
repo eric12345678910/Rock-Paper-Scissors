@@ -60,7 +60,7 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function rockPaperScissors(){
-    let limit = 5;
+    let limit = 1;
     let round = 1;
     let playerScore = 0;
     let computerScore = 0;
@@ -95,3 +95,7 @@ function rockPaperScissors(){
         }
     }
 }
+
+document.getElementById("rock").addEventListener("click", rockPaperScissors);
+document.getElementById("paper").addEventListener("click", rockPaperScissors);
+document.getElementById("scissors").addEventListener("click", rockPaperScissors);
