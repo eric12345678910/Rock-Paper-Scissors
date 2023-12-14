@@ -19,17 +19,42 @@
 
     </head>
 
+
     <h1> ROCK, PAPER, SCISSORS </h1>
+
+
     <body> 
         <div> The classic game with a fraction of the physical exertion!</div>
+        
+        <p class='scores'>
+          <span>Player Score: </span>
+          <span class = 'playerScore'></span>
+          <span> / </span>
+          <span class='limit'></span>
+
+          <span>Computer Score: </span>
+          <span class = 'cpuScore'></span>
+          <span> / </span>
+          <span class='limit'></span>
+        </p>
+
         <p>
           <button id="rock">Rock</button>
           <button id="paper">Paper</button>
           <button id="scissors">Scissors</button>
         </p>
 
-        <p class='player'><span>Player Score: </span><span class = 'playerScore'>0</span></p>
-        <p class='cpu'><span>Computer Score: </span><span class = 'cpuScore'>0</span></p>
+        <p class = 'roundInfo'>
+          <div><span>Round </span><span class="round"></span>  
+          </div>
+        </p>
+
+
+        <p class='hand'>
+          <span>player: </span><span class = 'playerHand'></span>
+          <span>cpu: </span><span class = 'cpuHand'></span>
+        </p>
+          
         <p class='results'></p>
     </body>
 
