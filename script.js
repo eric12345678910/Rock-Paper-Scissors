@@ -2,143 +2,169 @@ let roundNumber = 1;
 let limit = 5;
 let playerScore = 0;
 let cpuScore = 0;
+let li = document.createElement('li')
+let roundResultsElement = document.getElementsByClassName('roundResults')
 
-let winMessage = 'Yon won that one';
-let loseMessage = 'You lost that round';
-let tieMessage = 'It\'s a tie!';
-let champMessage = 'CONGRADULATIONS'
+
+let output = {
+
+    Player: "",
+    CPU: "",
+    Result: ""
+};
+let outputList = []
+
+//                      MESSAGES
+let winMessage = 'Win';
+let loseMessage = 'Lose';
+let tieMessage = 'Tie';
+let champMessage = 'CONGRADULATIONS!!! YOU WON THE GAME'
 let consolationMessage = 'JUST TRY AGAIN. I WON\'T TELL IF YOU DON\'T'
 let errorMessage = 'Error'
-
-
-
-
 let results = ''
 
-let roundNumberElement = document.getElementsByClassName('round');
+//                      ROUND NUMBER
+let roundNumberElement = document.getElementsByClassName('roundResults');
 roundNumberElement[0].innerText = roundNumber;
-console.log('round number', roundNumberElement)
+//console.log('ROUND #', roundNumber)
 
+//                      SCORE LIMIT
 let limitElement = document.getElementsByClassName('limit');
 limitElement[0].innerText = limit;
 limitElement[1].innerText = limit;
-console.log('limit number', limitElement)
+//console.log('SCORE LIMIT', limit)
 
+
+//                      SCORES
 let playerScoreElement = document.getElementsByClassName('playerScore');
 playerScoreElement[0].innerText = playerScore;
 
 let cpuScoreElement = document.getElementsByClassName('cpuScore');
 cpuScoreElement[0].innerText = cpuScore;
 
+//                      HAND PLAYED
 let playerHandElement = document.getElementsByClassName('playerHand');
 let cpuHandElement = document.getElementsByClassName('cpuHand');
 
-let resultsElement = document.getElementsByClassName('results');
+//                      RESULTS
+let resultsElement = document.getElementsByClassName('roundResults');
 resultsElement[0].innerText = results
 
 let tie = 'Tie'
 
 
-
-console.log(playerScoreElement);
-console.log(cpuScoreElement);
-
-
-
-function getComputerSelection(){
+//                      COMPUTER SELECTION
+function getCpuSelection(){
     let randomInt;
-    let computerSelection;
+    let cpuSelection;
 
     randomInt = Math.floor(Math.random() * 3) +1 ;
     if (randomInt == 1){
-        computerSelection = 'ROCK';
+        cpuSelection = 'ROCK';
     }
     else if (randomInt == 2){
-        computerSelection = 'PAPER';
+        cpuSelection = 'PAPER';
     }
     else if (randomInt == 3){
-        computerSelection = 'SCISSORS';
+        cpuSelection = 'SCISSORS';
     }
-    return (computerSelection);
+    return (cpuSelection);
 }
 
+//                      PLAYER SELECTION
 function round(playerSelection){
-    let computerSelection = getComputerSelection();
+    let cpuSelection = getCpuSelection();
 
-    playerHandElement[0].innerText = playerSelection;
-    cpuHandElement[0].innerText = computerSelection;
 
-    if (computerSelection == playerSelection){
-        console.log('Tie');
+    if (cpuSelection == playerSelection){
+        //console.log('Tie');
         results = tieMessage;
     }
-    else if (computerSelection == 'ROCK' && playerSelection == 'PAPER'){
-        console.log('Win');
+    else if (cpuSelection == 'ROCK' && playerSelection == 'PAPER'){
+        //console.log('Win');
         playerScore +=1;
-        playerScoreElement[0].innerHtml = playerScore;
-        results = winMessage;
-        
+        //playerScoreElement[0].innerHtml = playerScore;
+        results = winMessage;   
     }
-    else if (computerSelection == 'PAPER' && playerSelection == 'SCISSORS'){
-        console.log('Win');
-        playerScore +=1;
-        playerScoreElement[0].innerText = playerScore;
-        results = winMessage;
-    }
-    else if (computerSelection == 'SCISSORS' && playerSelection == 'ROCK'){
-        console.log('Win');;
+    else if (cpuSelection == 'PAPER' && playerSelection == 'SCISSORS'){
+        //console.log('Win');
         playerScore +=1;
         playerScoreElement[0].innerText = playerScore;
         results = winMessage;
     }
-    else if (computerSelection == 'ROCK' && playerSelection == 'SCISSORS'){
-        console.log('Lose');
+    else if (cpuSelection == 'SCISSORS' && playerSelection == 'ROCK'){
+        //console.log('Win');;
+        playerScore +=1;
+        playerScoreElement[0].innerText = playerScore;
+        results = winMessage;
+    }
+    else if (cpuSelection == 'ROCK' && playerSelection == 'SCISSORS'){
+        //console.log('Lose');
         cpuScore +=1;
         cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
-    else if (computerSelection == 'PAPER' && playerSelection == 'ROCK'){
-        console.log('Lose');
+    else if (cpuSelection == 'PAPER' && playerSelection == 'ROCK'){
+        //console.log('Lose');
         cpuScore +=1;
         cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
-    else if (computerSelection == 'SCISSORS' && playerSelection == 'PAPER'){
-        console.log('Lose');
+    else if (cpuSelection == 'SCISSORS' && playerSelection == 'PAPER'){
+        //console.log('Lose');
         cpuScore +=1;
         cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
     else{
-        console.log('Error');
+        //console.log('Error');
         results = errorMessage;
     }
 
+//                          GAME OVER
     if (playerScore == limit){
         roundNumber = 0;
-        resultsElement[0].innerText = champMessage;
+        results = champMessage;
+
         playerScoreElement[0].innerText = '0';
         cpuScoreElement[0].innerText = '0';
-
-        ;
-    } else if (cpuScore == limit){
+    } 
+    else if (cpuScore == limit){
         roundNumber = 0;
-        resultsElement[0].innerText = consolationMessage;
+        results = consolationMessage;
         playerScoreElement[0].innerText = '0'
         cpuScoreElement[0].innerText = '0';
-    } else{
+    } 
+    else{
         resultsElement[0].innerText = ''
     }
     
-    roundNumber ++;
-    roundNumberElement[0].innerText = roundNumber;
+//                      ORGANIZE ROUND RESULTS
+    output['Player'] = playerSelection;
+    output['CPU'] = cpuSelection;
+    output['Result'] = results;
 
+    outputList[(roundNumber)] = output;
+    console.log('Round ',roundNumber, outputList[roundNumber])
+
+
+//                      OUTPUT RESULT
+
+
+    roundResultsElement[0] = outputList[roundNumber];
+
+
+//                      NEXT ROUND
+    roundNumber ++;
+
+    /*
+    roundNumberElement[0].innerText = roundNumber;
     playerScoreElement.innerHtml = playerScore;
     cpuScoreElement.innerHtml = cpuScore;
     resultsElement[0].innerText = results
+    */
 
-
-    console.log("Player: ", playerScore, "CUP:", cpuScore);
+    console.log("Player: ", playerScore, "CPU:", cpuScore);
     //console.log('player element', playerScoreElement);
     //console.log('cpu element', cpuScoreElement);
 }
