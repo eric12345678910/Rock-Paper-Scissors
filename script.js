@@ -1,18 +1,24 @@
+//                      
 let roundNumber = 1;
 let limit = 5;
 let playerScore = 0;
 let cpuScore = 0;
-let li = document.createElement('li')
-let roundResultsElement = document.getElementsByClassName('roundResults')
 
 
 let output = {
-
-    Player: "",
-    CPU: "",
-    Result: ""
+    playerHand: "",
+    cpuHand: "",
+    result: "",
+    playerScore: 0,
+    cpuScore: 0,
 };
+
 let outputList = []
+
+let ul = document.getElementById("roundResults")
+let li = document.createElement('li');
+
+
 
 //                      MESSAGES
 let winMessage = 'Win';
@@ -24,8 +30,7 @@ let errorMessage = 'Error'
 let results = ''
 
 //                      ROUND NUMBER
-let roundNumberElement = document.getElementsByClassName('roundResults');
-roundNumberElement[0].innerText = roundNumber;
+let roundNumberElement = document.getElementById('roundResults');
 //console.log('ROUND #', roundNumber)
 
 //                      SCORE LIMIT
@@ -48,10 +53,9 @@ let cpuHandElement = document.getElementsByClassName('cpuHand');
 
 //                      RESULTS
 let resultsElement = document.getElementsByClassName('roundResults');
-resultsElement[0].innerText = results
+let roundResultsElement = document.getElementsByClassName('roundResults')
 
 let tie = 'Tie'
-
 
 //                      COMPUTER SELECTION
 function getCpuSelection(){
@@ -89,31 +93,31 @@ function round(playerSelection){
     else if (cpuSelection == 'PAPER' && playerSelection == 'SCISSORS'){
         //console.log('Win');
         playerScore +=1;
-        playerScoreElement[0].innerText = playerScore;
+        //playerScoreElement[0].innerText = playerScore;
         results = winMessage;
     }
     else if (cpuSelection == 'SCISSORS' && playerSelection == 'ROCK'){
         //console.log('Win');;
         playerScore +=1;
-        playerScoreElement[0].innerText = playerScore;
+        //playerScoreElement[0].innerText = playerScore;
         results = winMessage;
     }
     else if (cpuSelection == 'ROCK' && playerSelection == 'SCISSORS'){
         //console.log('Lose');
         cpuScore +=1;
-        cpuScoreElement[0].innerText = cpuScore;
+        //cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
     else if (cpuSelection == 'PAPER' && playerSelection == 'ROCK'){
         //console.log('Lose');
         cpuScore +=1;
-        cpuScoreElement[0].innerText = cpuScore;
+        //cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
     else if (cpuSelection == 'SCISSORS' && playerSelection == 'PAPER'){
         //console.log('Lose');
         cpuScore +=1;
-        cpuScoreElement[0].innerText = cpuScore;
+        //cpuScoreElement[0].innerText = cpuScore;
         results = loseMessage;
     }
     else{
@@ -126,8 +130,8 @@ function round(playerSelection){
         roundNumber = 0;
         results = champMessage;
 
-        playerScoreElement[0].innerText = '0';
-        cpuScoreElement[0].innerText = '0';
+        //playerScoreElement[0].innerText = '0';
+        //cpuScoreElement[0].innerText = '0';
     } 
     else if (cpuScore == limit){
         roundNumber = 0;
@@ -136,13 +140,15 @@ function round(playerSelection){
         cpuScoreElement[0].innerText = '0';
     } 
     else{
-        resultsElement[0].innerText = ''
+        //resultsElement[0].innerText = ''
     }
     
 //                      ORGANIZE ROUND RESULTS
-    output['Player'] = playerSelection;
-    output['CPU'] = cpuSelection;
-    output['Result'] = results;
+    output['playerHand'] = playerSelection;
+    output['cpuHand'] = cpuSelection;
+    output['result'] = results;
+    output['playerScore'] = playerScore;
+    output['cpuScore'] = cpuScore;
 
     outputList[(roundNumber)] = output;
     console.log('Round ',roundNumber, outputList[roundNumber])
@@ -151,23 +157,32 @@ function round(playerSelection){
 //                      OUTPUT RESULT
 
 
-    roundResultsElement[0] = outputList[roundNumber];
+    roundResultsElement.innerText = (outputList[roundNumber]);
+
+
+//                      APPENDING
+
+    ul.appendChild(document.createTextNode(output['result']))
+
+
+
+
 
 
 //                      NEXT ROUND
     roundNumber ++;
 
-    /*
-    roundNumberElement[0].innerText = roundNumber;
-    playerScoreElement.innerHtml = playerScore;
-    cpuScoreElement.innerHtml = cpuScore;
-    resultsElement[0].innerText = results
-    */
 
-    console.log("Player: ", playerScore, "CPU:", cpuScore);
+
+    //console.log("Player: ", playerScore, "CPU:", cpuScore);
     //console.log('player element', playerScoreElement);
     //console.log('cpu element', cpuScoreElement);
 }
+
+
+
+
+
 
 
 /*
@@ -247,8 +262,6 @@ function consolation(){
 }
 
 
-
-
-
 //playerScoreElement.innerHtml = playerScore;
 //cpuScoreElement.innerHtml = cpuScore;
+
