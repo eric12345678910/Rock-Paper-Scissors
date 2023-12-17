@@ -1,5 +1,14 @@
+let gameNumber = 1;
+
+
+let toWin = 2;
+let bestOf = (toWin*2) -1
+
+let playerWins = 0;
+let cpuWins = 0;
+
 let roundNumber = 0;
-let scoreLimit = 3;
+let scoreLimit = 2;
 let playerHand = "";
 let cpuHand = "";
 let roundResult;
@@ -28,7 +37,7 @@ let errorMessage = 'Error'
 let tie = 'Tie'
 
 
-//                          SET NUMBERS
+//                          NUMBER ELEMENTS
 limitElement[0].innerText = scoreLimit;
 limitElement[1].innerText = scoreLimit;
 playerScoreElement[0].innerText = playerScore;
@@ -57,6 +66,17 @@ function getCpuSelection(){
 //                      PLAYER SELECTION
 function round(playerSelection){
     let cpuSelection = getCpuSelection();
+
+    if ( (playerScore == scoreLimit) || (cpuScore == scoreLimit) ){
+        gameNumber++;
+        roundNumber = 0;
+        playerScore = 0;
+        cpuScore = 0;
+        playerScoreElement[0].innerText = 0;
+        cpuScoreElement[0].innerText = 0;
+        resultElement.innerHTML = '';
+   
+    }
 
     if (cpuSelection == playerSelection){
         roundResult = tieMessage;
@@ -96,8 +116,9 @@ function round(playerSelection){
         roundResult = errorMessage;
     }
 
-    console.log("Round Number:", roundNumber, 
-                " Result:", roundResult, 
+    console.log("Game ", gameNumber,
+                "Round ", roundNumber, 
+                " ", roundResult, 
                 " Player Selection:", playerSelection, 
                 " CPU Selection:", cpuSelection, 
                 " Player Score:", playerScore, 
@@ -107,31 +128,17 @@ function round(playerSelection){
     
 
 //                          GAME OVER
-    if (playerScore == scoreLimit){
-        roundResult = champMessage;
 
-        //playerScoreElement[0].innerText = '0';
-        //cpuScoreElement[0].innerText = '0';
-    } 
-    else if (cpuScore == scoreLimit){
-        roundResult = consolationMessage;
-        playerScoreElement[0].innerText = playerScore;
-        cpuScoreElement[0].innerText = cpuScore;
-    } 
 
-    let result = "Round Number:" + roundNumber +
-                " Result:" + roundResult +
-                " Player Selection:" + playerSelection +
-                " CPU Selection:" + cpuSelection +
+  
+
+
+    let result = "Round " + roundNumber +
+                " " + roundResult +
+                " Player:" + playerSelection +
+                " CPU:" + cpuSelection +
                 " Player Score:" + playerScore +
                 " CPU Score:" + cpuScore ;
-
-
-
-
-
-
-
 
 
 
@@ -140,17 +147,14 @@ function round(playerSelection){
 
  //   resultElement.appendChild((output['result']));
 
-    li = document.createElement('li');
+    li = document.createElement('ul');
     li.innerText = result;
    
-
-
     resultElement.appendChild(li)
 
 
 //                      NEXT ROUND
-    playerScoreElement[0].innerText = playerScore;
-    cpuScoreElement[0].innerText = cpuScore;
+
 
 }
 
