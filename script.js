@@ -193,24 +193,17 @@ function rockPaperScissors(){
 }
 */
 function fullGame(result){
-    /*
-    let output = {
-        'scoreLimit':scoreLimit,
-        'gameNumber':gameNumber,
-        'roundNumber':result.roundNumber,
-    
-        'playerSelection':result.playerSelection,
-        'playerScore':playerScore,
-        'playerWins':playerWins,
-    
-        'cpuSelection':result.cpuSelection,
-        'cpuScore':cpuScore,
-        'cpuWins':cpuWins,
-    
-        'ties':ties,
-        'roundResult':result.roundResult 
-    }*/
 
+    if (output.playerScore == output.scoreLimit || output.cpuScore == output.scoreLimit){
+        output.gameNumber++
+        output.roundNumber = 1,
+        output.playerScore = 0,
+        output.cpuScore = 0,
+        //cpuWins = cpuWins,
+        
+        ties = 0,
+        roundResult = result.roundResult
+    }
     if (result.roundResult == 'Win'){
         output.playerScore++;
     }
@@ -233,16 +226,7 @@ function fullGame(result){
         output.cpuWins ++;
         }
 
-    if (output.playerScore == output.scoreLimit || output.cpuScore == output.scoreLimit){
-        output.gameNumber++
-        output.roundNumber = 1,
-        output.playerScore = 0,
-        output.cpuScore = 0,
-        //cpuWins = cpuWins,
-        
-        ties = 0,
-        roundResult = result.roundResult
-    }
+
     outputList.push(output)
     if (outputList.length > 1){
         console.log(outputList[outputList.length -1])
@@ -255,6 +239,22 @@ function fullGame(result){
    
    playerScoreElement[0].innerText = output.playerScore;
    cpuScoreElement[0].innerText = output.cpuScore;
+
+   let finalOutput = ("You ", output.roundResult)
+
+
+
+   //resultElement.appendChild(output.roundResult);
+   ul = document.createElement('ul');
+   ul.innerText = output.roundResult, output.playerScore ;
+   resultElement.appendChild(ul);
+
+
+   //resultElement.appendChild((output['result']));
+    //li = document.createElement('li');
+    //li.innerText = result;
+
+    
 
 }
 
