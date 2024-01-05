@@ -6,20 +6,85 @@ body{
     padding: auto;
     border: auto;
 
-    background-color: lightgrey;
+    background-color: whitesmoke;
     font-family: "futura";
     font-size: 20px;
+
+    /*border: 10px dotted green;*/
 }
 
-h1{
-    height: 120px;
+h1{                                             /* header */
+    height: auto;
     width: auto;
+    padding: 40px;
 
     margin: auto ;
-    align-items: center;
-    align-self: center;
+    text-align: center;
+    text-orientation: center;
 
-    border-style: solid;
+    /*border: 6px dashed #f6f6f2;*/
     background-color: rgb(18, 164, 212);
 
+    /*border: 5px dashed red;*/
+}
+
+div{
+
+    background-color: #d4b51d;
+    text-align: center;
+
+    height: auto;
+    padding: 10px;
+
+
+
+    /*border: 5px dashed blue;*/
+}
+
+p.scores{
+    background-color: whitesmoke;
+    padding: 15px;
+
+    text-align: center;
+
+    margin: auto;
+
+
+    /*border: 5px dashed yellow;*/
+}
+
+p.buttons{
+    background-color: whitesmoke;
+    /*padding: 10px;*/
+
+    text-align: center;
+    margin: auto;
+
+/*    margin:0;*/
+
+    /*border: 5px dotted pink;*/
+}
+
+button{
+    width: 125px;
+    height: auto;
+    background-color: rgb(206, 201, 201);
+    /*padding: 5px;*/
+    font-size: 20px;
+    border: 2px solid #767675;
+    border-radius: 6px;
+
+    transition-duration: 0.4s
+    
+    /*border: 5px dotted orange;*/
+}
+
+button:hover{
+    background-color: #d4b51d;
+    color:white;
+}
+
+ul{
+    border: 5px dotted brown;
+    text-align: center;
 }
