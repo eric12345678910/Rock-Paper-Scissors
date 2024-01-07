@@ -213,6 +213,11 @@ function fullGame(result){
    console.log('PLAYER SCORE:', output.playerScore)
    console.log('CPU SCORE:', output.cpuScore)
    
+   let roundNumberElement = document.getElementById('roundNumber')
+   roundNumber = document.createElement('ul');
+   roundNumber.innerText = output.roundNumber;
+   roundNumberElement.prepend(roundNumber);
+
 
     let playerSelectionElement = document.getElementById('playerSelection')
     playerSelect = document.createElement('ul');
@@ -228,9 +233,6 @@ function fullGame(result){
     cpuSelect = document.createElement('ul');
     cpuSelect.innerText = output.cpuSelection;
     cpuSelectionElement.prepend(cpuSelect);
-
-
-
     /*
 
     ul2 = document.createElement('ul');
@@ -239,10 +241,11 @@ function fullGame(result){
     playerSelectionElement.appendChild(ul2);
 */
 //let playerSelectionElement = document.getElementById("playerSelection")
-    let colElement = document.getElementById('playerSelection')
+/*  
+let colElement = document.getElementById('playerSelection')
     col = document.createElement('ul');
     col.innerText = output.playerSelection;
-    
+  */  
 
 }
 

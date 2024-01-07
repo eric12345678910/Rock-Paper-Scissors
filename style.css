@@ -90,15 +90,26 @@ ul{
 
 div.results{
     display: grid;
-    grid-template-columns: auto auto auto;
-    /*border: 5px dashed blue;*/
+    grid-template-columns: 0px auto auto auto ;
+    border: 5px dashed blue;
     text-align: center;
     flex-direction: column-reverse;
+    flex: auto;
+
+
+}
+
+.results #roundNumber {
+    width: 30px;
+    flex: auto;
+    color: rgb(33, 33, 33);
+    border: 2px dashed red;
+    flex-direction: row;
 }
 
 .results #playerSelection {
     color: rgb(33, 33, 33);
-/*    border: 2px dashed red;*/
+    border: 2px dashed blue;
     flex-direction: row;
 }
 
