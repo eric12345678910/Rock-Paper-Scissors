@@ -75,8 +75,8 @@ button:hover{
 }
 
 button:active{
-    box-shadow: 5px 5px #d4b51d;
-    transform: translateY(0 1px 4px 0);
+    box-shadow: 6px 7px #d4b51d;
+    transform: scale(0.9)
 }
 
 
@@ -90,15 +90,26 @@ ul{
 
 div.results{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 0px auto auto auto ;
     /*border: 5px dashed blue;*/
     text-align: center;
     flex-direction: column-reverse;
+    flex: auto;
+
+
+}
+
+.results #roundNumber {
+    width: 30px;
+    flex: auto;
+    color: rgb(33, 33, 33);
+  /*  border: 2px dashed red;*/
+    flex-direction: row;
 }
 
 .results #playerSelection {
     color: rgb(33, 33, 33);
-/*    border: 2px dashed red;*/
+  /*  border: 2px dashed blue;*/
     flex-direction: row;
 }
 
