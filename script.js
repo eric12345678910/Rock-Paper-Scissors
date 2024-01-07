@@ -59,7 +59,6 @@ function singleRound(playerSelection){
     output.cpuSelection = cpuSelection;
         output.playerSelection = playerSelection;
 
-
     if (cpuSelection == playerSelection){
         output.roundResult = 'tie';                             //roundResult = tieMessage;
     }
@@ -67,13 +66,11 @@ function singleRound(playerSelection){
         cpuSelection == 'paper' && playerSelection == 'scissors'||
         cpuSelection == 'scissors' && playerSelection == 'rock'){
             output.roundResult = 'win'
-            output.playerScore ++;
     }
     else if (cpuSelection == 'rock' && playerSelection == 'scissors'||
         cpuSelection == 'paper' && playerSelection == 'rock'||
         cpuSelection == 'scissors' && playerSelection == 'paper'){
             output.roundResult = 'lose';
-            output.cpuScore ++;
     }
     else{
         output.roundResult = 'Error';
@@ -94,6 +91,12 @@ function fullGame(result){
     else if(result.roundResult =='tie'){
         output.ties++;
     }
+
+
+
+
+
+
     /*
     if (result.roundResult =='Win'||
         result.roundResult =='Lose'||
@@ -110,26 +113,17 @@ function fullGame(result){
 
 
     outputList.push(output)
-    console.log('here is that output list you asked for. ', outputList)
-    if (outputList.length > 1){
-        console.log(outputList[outputList.length -1])
-    }
-    else if (outputList.length == 1){
-        console.log(outputList[0])
-    }
-        
-   //console.log('list: ', outputList[outputList.length -1])
    
-   playerScoreElement[0].innerText = output.playerScore;
-   cpuScoreElement[0].innerText = output.cpuScore;
+    playerScoreElement[0].innerText = output.playerScore;
+    cpuScoreElement[0].innerText = output.cpuScore;
 
-   console.log('PLAYER SCORE:', output.playerScore)
-   console.log('CPU SCORE:', output.cpuScore)
-   
-   let roundNumberElement = document.getElementById('roundNumber')
-   roundNum = document.createElement('ul');
-   roundNum.innerText = output.roundNumber;
-   roundNumberElement.prepend(roundNum);
+    console.log('PLAYER SCORE:', output.playerScore)
+    console.log('CPU SCORE:', output.cpuScore)
+
+    let roundNumberElement = document.getElementById('roundNumber')
+    roundNum = document.createElement('ul');
+    roundNum.innerText = output.roundNumber;
+    roundNumberElement.prepend(roundNum);
 
 
     let playerSelectionElement = document.getElementById('playerSelection')
@@ -149,13 +143,14 @@ function fullGame(result){
 
     if (output.playerScore == output.scoreLimit || output.cpuScore == output.scoreLimit){
         output.gameNumber++
-        output.roundNumber = 1,
+        output.roundNumber = 0,
         output.playerScore = 0,
         output.cpuScore = 0,
         output.ties = 0,
         output.roundResult = "";
     }
     output.roundNumber ++;
+    console.log('SCORe LIMIITTTTT', output.scoreLimit)
 
 }
 
