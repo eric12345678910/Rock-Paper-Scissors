@@ -62,12 +62,14 @@ function singleRound(playerSelection){
     else if (cpuSelection == 'rock' && playerSelection == 'paper'||    //player wins
         cpuSelection == 'paper' && playerSelection == 'scissors'||
         cpuSelection == 'scissors' && playerSelection == 'rock'){
-            output.roundResult = 'win';
+            output.roundResult = 'win'
+            output.playerScore ++;
     }
     else if (cpuSelection == 'rock' && playerSelection == 'scissors'||
         cpuSelection == 'paper' && playerSelection == 'rock'||
         cpuSelection == 'scissors' && playerSelection == 'paper'){
             output.roundResult = 'lose';
+            output.cpuScore ++;
     }
     else{
         output.roundResult = 'Error';
@@ -159,6 +161,8 @@ function rockPaperScissors(){
 */
 function fullGame(result){
 
+    console.log('here is the input that the function is running', result)
+
     if (output.playerScore == output.scoreLimit || output.cpuScore == output.scoreLimit){
         output.gameNumber++
         output.roundNumber = 1,
@@ -167,7 +171,7 @@ function fullGame(result){
         //cpuWins = cpuWins,
         
         ties = 0,
-        roundResult = result.roundResult
+        roundResult = output.roundResult
     }
     if (result.roundResult == 'Win'){
         output.playerScore++;
@@ -178,11 +182,11 @@ function fullGame(result){
     else if(result.roundResult =='Tie'){
         output.ties++;
     }
-    if (result.roundResult =='Win'||
+    /*if (result.roundResult =='Win'||
         result.roundResult =='Lose'||
         result.roundResult =='Tie'){
 
-        }
+        }*/
  
     if(output.playerScore == output.scoreLimit){
         output.playerWins ++;
@@ -193,6 +197,7 @@ function fullGame(result){
 
 
     outputList.push(output)
+    console.log('here is that output list you asked for. ', outputList)
     if (outputList.length > 1){
         console.log(outputList[outputList.length -1])
     }
@@ -205,11 +210,9 @@ function fullGame(result){
    playerScoreElement[0].innerText = output.playerScore;
    cpuScoreElement[0].innerText = output.cpuScore;
 
-   let finalOutput = ("You ", output.roundResult)
-
-
-    screenOutput = (output.playerSelection + ' ' + output.roundResult + ' ' + output.cpuSelection);
-    console.log(screenOutput)
+   console.log('PLAYER SCORE:', output.playerScore)
+   console.log('CPU SCORE:', output.cpuScore)
+   
 
     let playerSelectionElement = document.getElementById('playerSelection')
     playerSelect = document.createElement('ul');
