@@ -1,0 +1,116 @@
+body{
+    height: 100%;
+    width: 100%;
+
+    margin: auto;
+    padding: auto;
+    border: auto;
+
+    background-color: whitesmoke;
+    font-family: "futura";
+    font-size: 20px;
+
+    /*border: 10px dotted green;*/
+}
+
+h1{                                             /* header */
+    height: auto;
+    width: auto;
+    padding: 40px;
+    color: rgb(33, 33, 33);
+
+    margin: auto ;
+    text-align: center;
+    text-orientation: center;
+
+    /*border: 6px dashed #f6f6f2;*/
+    background-color: rgb(18, 164, 212);
+
+    /*border: 5px dashed red;*/
+}
+
+.h2{
+
+    background-color: #d4b51d;
+    text-align: center;
+
+    height: auto;
+    padding: 10px;
+    /*border: 5px dashed blue;*/
+}
+
+p.scores{
+    background-color: whitesmoke;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+   /* border: 5px dashed rgb(25, 184, 192);*/
+}
+
+p.buttons{
+    background-color: whitesmoke;
+    /*padding: 10px;*/
+    margin: auto;
+    text-align: center;
+    /*border: 5px dotted pink;*/
+}
+
+button{
+    width: 125px;
+    height: auto;
+    background-color: rgb(206, 201, 201);
+    /*padding: 5px;*/
+    font-size: 20px;
+    border: 2px solid #767675;
+    border-radius: 6px;
+
+    transition-duration: 0.4s
+    
+    /*border: 5px dotted orange;*/
+}
+
+button:hover{
+    background-color: rgb(150, 148, 148);
+    color:white;
+}
+
+button:active{
+    box-shadow: 5px 5px #d4b51d;
+    transform: translateY(0 1px 4px 0);
+}
+
+
+/*
+ul{
+    flex-direction: column;
+    /*border: 5px dotted brown;
+    text-align: center;
+}
+*/
+
+div.results{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /*border: 5px dashed blue;*/
+    text-align: center;
+    flex-direction: column-reverse;
+}
+
+.results #playerSelection {
+    color: rgb(33, 33, 33);
+/*    border: 2px dashed red;*/
+    flex-direction: row;
+}
+
+.results #cpuSelection {
+    color: rgb(26, 26, 26);
+/*    border: 2px dashed red;*/
+    flex-direction: row;
+}
+
+.results #roundResult {
+    color: rgb(33, 33, 33);
+/*    border: 2px dashed red;*/
+    flex-direction: row;
+}
+

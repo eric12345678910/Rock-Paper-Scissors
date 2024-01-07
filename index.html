@@ -3,19 +3,9 @@
     <head>
         <meta charset="utf-8">
         <script src= "script.js" defer></script>
+        <link rel="stylesheet" href="style.css" type="text/css">
         <title>Rock Paper Scissors</title>
     
-        <style>
-          html {
-            font-family: sans-serif;
-          }
-          body {
-            width: 50%;
-            max-width: 800px;
-            min-width: 480px;
-            margin: 0 auto;
-          }
-        </style>
     </head>
 
 
@@ -23,26 +13,29 @@
 
 
     <body> 
-        <div> The classic game with a fraction of the physical exertion!</div>
+        <div class = "h2" > The classic game with a fraction of the physical exertion!</div>
         
         <p class='scores'>
-          <span>Player Score: </span><span class = 'playerScore'></span>
+          <span>You: </span><span class = 'playerScore'></span>
           <span> / </span><span class='scoreLimit'></span>
 
-          <span>Computer Score: </span><span class = 'cpuScore'></span>
+          <span> vs </span>
+
+          <span>Cpu: </span><span class = 'cpuScore'></span>
           <span> / </span><span class='scoreLimit'></span>
         </p>
 
-
-        <p>
+        <p class = 'buttons'>
           <button id="rock">Rock</button>
           <button id="paper">Paper</button>
           <button id="scissors">Scissors</button>
         </p>
 
-        <p>
-          <ul id="roundResults"></ul>
-        </p>
+        <div class = 'results'>
+          <div id="playerSelection"></div>
+          <div id="roundResult"></div>
+          <div id="cpuSelection"></div>
+        </div>
 
           
     </body>
