@@ -15,7 +15,7 @@ let output = {
     'scoreLimit':3
 }
 let outputList = [];
-
+let gameOver = ""//game over message
 
 //                          GET ELEMENTS
 
@@ -92,24 +92,15 @@ function fullGame(result){
         output.ties++;
     }
 
-
-
-
-
-
-    /*
-    if (result.roundResult =='Win'||
-        result.roundResult =='Lose'||
-        result.roundResult =='Tie'){
-            output.roundNumber ++;
-        }
-        */
     if(output.playerScore == output.scoreLimit){
         output.playerWins ++;
+        gameOver = "you win"
         }
     else if(output.cpuScore == output.scoreLimit){
         output.cpuWins ++;
-        }
+        gameOver = "you did not win that one"
+    }
+
 
 
     outputList.push(output)
@@ -125,21 +116,20 @@ function fullGame(result){
     roundNum.innerText = output.roundNumber;
     roundNumberElement.prepend(roundNum);
 
-
     let playerSelectionElement = document.getElementById('playerSelection')
-    playerSelect = document.createElement('ul');
-    playerSelect.innerText = output.playerSelection;
-    playerSelectionElement.prepend(playerSelect);
+    ul = document.createElement('ul');
+    ul.innerText = output.playerSelection;
+    playerSelectionElement.prepend(ul);
 
     let resultElement = document.getElementById('roundResult')
-    resultCol = document.createElement('ul');
-    resultCol.innerText = output.roundResult;
-    resultElement.prepend(resultCol);
+    ul = document.createElement('ul');
+    ul.innerText = output.roundResult;
+    resultElement.prepend(ul);
 
     let cpuSelectionElement = document.getElementById('cpuSelection')
-    cpuSelect = document.createElement('ul');
-    cpuSelect.innerText = output.cpuSelection;
-    cpuSelectionElement.prepend(cpuSelect);
+    ul = document.createElement('ul');
+    ul.innerText = output.cpuSelection;
+    cpuSelectionElement.prepend(ul);
 
     if (output.playerScore == output.scoreLimit || output.cpuScore == output.scoreLimit){
         output.gameNumber++
@@ -148,12 +138,32 @@ function fullGame(result){
         output.cpuScore = 0,
         output.ties = 0,
         output.roundResult = "";
+        let roundNumberElement = document.getElementById('roundNumber')
+        roundNum = document.createElement('ul');
+        roundNum.innerText = "-";
+        roundNumberElement.prepend(roundNum);
+
+        let playerSelectionElement = document.getElementById('playerSelection')
+        ul = document.createElement('ul');
+        ul.innerText = "-";
+        playerSelectionElement.prepend(ul);
+
+        let resultElement = document.getElementById('roundResult')
+        ul = document.createElement('ul');
+        ul.innerText = gameOver;
+        resultElement.prepend(ul);
+
+        let cpuSelectionElement = document.getElementById('cpuSelection')
+        ul = document.createElement('ul');
+        ul.innerText = "-";
+        cpuSelectionElement.prepend(ul);
+
+        
     }
     output.roundNumber ++;
     console.log('SCORe LIMIITTTTT', output.scoreLimit)
 
 }
-
 
 
 function gameStats(){
