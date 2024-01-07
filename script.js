@@ -1,25 +1,3 @@
-/*
-let gameNumber = 1;
-let roundNumber = 1;
-let scoreLimit = 3;
-
-let playerHand = "";
-let playerScore = 0;
-let playerWins = 0;
-
-
-let cpuHand = "";
-let cpuScore = 0;
-let cpuWins = 0;
-
-let ties = 0;
-let roundResult;
-
-let outputList = [];
-*/
-
-
-
 let output = {
     'gameNumber':1,
     'roundNumber':1,
@@ -40,7 +18,9 @@ let outputList = [];
 
 
 //                          GET ELEMENTS
-let resultElement = document.getElementById("roundResults")
+let playerSelectionElement = document.getElementById("playerSelection")
+
+let cpuSelectionElemeElement = document.getElementById("roundResults")
 let limitElement = document.getElementsByClassName('scoreLimit');
 let playerScoreElement = document.getElementsByClassName('playerScore');
 let cpuScoreElement = document.getElementsByClassName('cpuScore');
@@ -48,19 +28,6 @@ let cpuScoreElement = document.getElementsByClassName('cpuScore');
 let li = document.createElement('li');
 playerScoreElement[0].innerText = output.playerScore;
 cpuScoreElement[0].innerText = output.cpuScore;
-
-
-/*                         MESSAGES
-let winMessage = 'Win';
-let loseMessage = 'Lose';
-let tieMessage = 'Tie';
-let champMessage = 'CONGRADULATIONS!!! YOU WON THE GAME'
-let consolationMessage = 'JUST TRY AGAIN. I WON\'T TELL IF YOU DON\'T'
-let errorMessage = 'Error'
-let tie = 'Tie'
-*/
-
-
 
 
 
@@ -71,13 +38,13 @@ function getCpuSelection(){
 
     randomInt = Math.floor(Math.random() * 3) +1 ;
     if (randomInt == 1){
-        cpuSelection = 'ROCK';
+        cpuSelection = 'rock';
     }
     else if (randomInt == 2){
-        cpuSelection = 'PAPER';
+        cpuSelection = 'paper';
     }
     else if (randomInt == 3){
-        cpuSelection = 'SCISSORS';
+        cpuSelection = 'scissors';
     }
     return (cpuSelection);                          // return ROCK PAPER SCISSOR
 }
@@ -90,24 +57,22 @@ function singleRound(playerSelection){
 
 
     if (cpuSelection == playerSelection){
-        output.roundResult = 'Tie';                             //roundResult = tieMessage;
+        output.roundResult = 'tie';                             //roundResult = tieMessage;
     }
-    else if (cpuSelection == 'ROCK' && playerSelection == 'PAPER'||    //player wins
-        cpuSelection == 'PAPER' && playerSelection == 'SCISSORS'||
-        cpuSelection == 'SCISSORS' && playerSelection == 'ROCK'){
-            output.roundResult = 'Win';
+    else if (cpuSelection == 'rock' && playerSelection == 'paper'||    //player wins
+        cpuSelection == 'paper' && playerSelection == 'scissors'||
+        cpuSelection == 'scissors' && playerSelection == 'rock'){
+            output.roundResult = 'win';
     }
-    else if (cpuSelection == 'ROCK' && playerSelection == 'SCISSORS'||
-        cpuSelection == 'PAPER' && playerSelection == 'ROCK'||
-        cpuSelection == 'SCISSORS' && playerSelection == 'PAPER'){
-            output.roundResult = 'Lose';
+    else if (cpuSelection == 'rock' && playerSelection == 'scissors'||
+        cpuSelection == 'paper' && playerSelection == 'rock'||
+        cpuSelection == 'scissors' && playerSelection == 'paper'){
+            output.roundResult = 'lose';
     }
     else{
         output.roundResult = 'Error';
     }
     console.log(output.roundResult) // win lose or tie
-
-    
 
     console.log('Single Round Output: ', output)
     
@@ -243,17 +208,37 @@ function fullGame(result){
    let finalOutput = ("You ", output.roundResult)
 
 
+    screenOutput = (output.playerSelection + ' ' + output.roundResult + ' ' + output.cpuSelection);
+    console.log(screenOutput)
 
-   //resultElement.appendChild(output.roundResult);
-   ul = document.createElement('ul');
-   ul.innerText = output.roundResult, output.playerScore ;
-   resultElement.appendChild(ul);
+    let playerSelectionElement = document.getElementById('playerSelection')
+    playerSelect = document.createElement('ul');
+    playerSelect.innerText = output.playerSelection;
+    playerSelectionElement.prepend(playerSelect);
+
+    let resultElement = document.getElementById('roundResult')
+    resultCol = document.createElement('ul');
+    resultCol.innerText = output.roundResult;
+    resultElement.prepend(resultCol);
+
+    let cpuSelectionElement = document.getElementById('cpuSelection')
+    cpuSelect = document.createElement('ul');
+    cpuSelect.innerText = output.cpuSelection;
+    cpuSelectionElement.prepend(cpuSelect);
 
 
-   //resultElement.appendChild((output['result']));
-    //li = document.createElement('li');
-    //li.innerText = result;
 
+    /*
+
+    ul2 = document.createElement('ul');
+    ul2.innerText = output.playerSelection;
+    let rowElement = document.getElementById('playerSelection');
+    playerSelectionElement.appendChild(ul2);
+*/
+//let playerSelectionElement = document.getElementById("playerSelection")
+    let colElement = document.getElementById('playerSelection')
+    col = document.createElement('ul');
+    col.innerText = output.playerSelection;
     
 
 }
@@ -265,20 +250,20 @@ function gameStats(){
 }
 
 function rock(){
-    playerSelection = "ROCK";
-    fullGame(singleRound('ROCK'))
+    playerSelection = "rock";
+    fullGame(singleRound('rock'))
     //console.log(playerSelection);
 }
 
 function paper(){
-    playerSelection = "PAPER";
-    fullGame(singleRound('PAPER'))
+    playerSelection = "paper";
+    fullGame(singleRound('paper'))
     //console.log(playerSelection);
 }
 
 function scissors(){
-    playerSelection = "SCISSORS";
-    fullGame(singleRound('SCISSORS'))
+    playerSelection = "scissors";
+    fullGame(singleRound('scissors'))
     //console.log(playerSelection);
 }
 
