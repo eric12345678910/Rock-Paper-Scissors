@@ -94,11 +94,11 @@ function fullGame(result){
 
     if(output.playerScore == output.scoreLimit){
         output.playerWins ++;
-        gameOver = "you win"
+        gameOver = "you won!"
         }
     else if(output.cpuScore == output.scoreLimit){
         output.cpuWins ++;
-        gameOver = "you did not win that one"
+        gameOver = "you (did not) win!"
     }
 
 
